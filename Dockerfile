@@ -9,11 +9,10 @@ WORKDIR /src
 
 # Copy project files
 COPY *.sln .
-COPY MyPortfolio/*.csproj ./MyPortfolio/
-RUN dotnet restore MyPortfolio/MyPortfolio.csproj
+COPY *.csproj ./
+RUN dotnet restore
 
 COPY . .
-WORKDIR /src/MyPortfolio
 RUN dotnet build -c Release -o /app/build
 
 FROM build AS publish
