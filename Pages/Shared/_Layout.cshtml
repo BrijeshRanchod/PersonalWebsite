@@ -1,0 +1,100 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - MyPortfolio</title>
+    <script type="importmap"></script>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/MyPortfolio.styles.css" asp-append-version="true" />
+</head>
+<body>
+<header>
+    <div class="quote-bar text-light bg-black border-bottom box-shadow py-3">
+        <div class="container text-center">
+            <blockquote id="quoteText" class="mb-1 fst-italic">"Innovation distinguishes between a leader and a follower."</blockquote>
+            <figcaption id="quoteAuthor" class="blockquote-footer text-light small">
+                — Steve Jobs
+            </figcaption>
+        </div>
+    </div>
+</header>
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2025 - Brijesh Ranchod 
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+<script>
+    const quotes = [
+    {
+        text: "Innovation distinguishes between a leader and a follower.",
+        author: "Steve Jobs"
+    },
+    {
+        text: "Your most unhappy customers are your greatest source of learning.",
+        author: "Bill Gates"
+    },
+    {
+        text: "I think it is possible for ordinary people to choose to be extraordinary.",
+        author: "Elon Musk"
+    },
+    {
+        text: "Don't compare yourself with anyone in this world... if you do so, you are insulting yourself.",
+        author: "Bill Gates"
+    },
+    {
+        text: "It’s fine to celebrate success but it is more important to heed the lessons of failure.",
+        author: "Bill Gates"
+    },
+    {
+        text: "Stay hungry. Stay foolish.",
+        author: "Steve Jobs"
+    },
+    {
+        text: "Failure is an option here. If things are not failing, you are not innovating enough.",
+        author: "Elon Musk"
+    },
+    {
+        text: "If you double the number of experiments you do per year, you're going to double your inventiveness.",
+        author: "Jeff Bezos"
+    },
+    {
+        text: "One of the only ways to get out of a tight box is to invent your way out.",
+        author: "Jeff Bezos"
+    },
+    {
+        text: "What's dangerous is not to evolve.",
+        author: "Jeff Bezos"
+    },
+    {
+        text: "We are stubborn on vision. We are flexible on details.",
+        author: "Jeff Bezos"
+    }
+];
+
+    let quoteIndex = 0;
+    function rotateQuote() {
+        const quote = quotes[quoteIndex];
+        document.getElementById("quoteText").textContent = `"${quote.text}"`;
+        document.getElementById("quoteAuthor").textContent = `— ${quote.author}`;
+        quoteIndex = (quoteIndex + 1) % quotes.length;
+    }
+
+    setInterval(rotateQuote, 6000); // Change quote every 6 seconds
+</script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

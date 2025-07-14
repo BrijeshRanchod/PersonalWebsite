@@ -1,0 +1,146 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<link rel="stylesheet" href="~/css/site.css" />
+
+<div class="hero-wrapper">
+    <canvas id="matrix-canvas"></canvas>
+
+    <div class="hero-content text-center">
+        <img src="~/images/profilepic.jpg" alt="Profile Picture" class="profile-img" />
+
+        <h1 class="display-4 name-title">Brijesh Ranchod</h1>
+
+        <p class="lead static-role">
+            I am a <span class="dynamic-role" id="roleDisplay">Software Developer</span>
+        </p>
+
+        <div class="social-links">
+            <a href="mailto:brijeshmranchod@gmail.com" target="_blank">Email</a>
+            <span>|</span>
+            <a href="https://github.com/brijeshranchod" target="_blank">GitHub</a>
+            <span>|</span>
+            <a href="https://www.linkedin.com/in/brijeshranchod" target="_blank">LinkedIn</a>
+        </div>
+
+        <div class="projects mt-4">
+            <h5 ">Highlighted Projects (Projects still under construction):</h5>
+            <ul>
+                <li><a href="/projects/security-app">Security Response App (Supabase + Blazor)</a></li>
+                <li><a href="/projects/social-network">Social Network (PHP & MySQL)</a></li>
+                <li><a href="/projects/weather-app">Weather Forecast App (Flask)</a></li>
+                <li><a href="/projects/fire-drill-tracker">QR Fire Drill Tracker (Razor Pages)</a></li>
+                <li><a href="/projects/chatbot">Client Query Chatbot (ASP.NET)</a></li>
+            </ul>
+        </div>
+
+        <div class="about mt-5">
+            <h5>About Me</h5>
+            <p>
+                I’m a passionate and driven Software Developer currently working as a Junior Software Engineer at The Core Group (Finance Team).
+                I specialize in backend development, systems integration, and API-driven applications using C#, Python, PHP, and FileMaker.
+                My journey has taken me through freelance work, university studies (BSc in IT), Support Desk Engineer, and now industry-level experience in fintech.
+            </p>
+        </div>
+
+        <div class="work-experience mt-5 text-start">
+            <h5 class="text-center mb-4">Work Experience</h5>
+
+            <div class="job-entry mb-4">
+                <h6>Core Group</h6>
+                <strong>Software Developer Intern</strong> <span class="text-light">| October 2024 – Present</span>
+                <ul>
+                    <li>C# | DotNet Frameworks | ASP.NET</li>
+                    <li>Flowgear | JSON | Next.JS | React.JS</li>
+                    <li>Python | Flask | Streamlit</li>
+                    <li>SQL | Relational Database Management</li>
+                    <li>Networks & Server (Linux Server)</li>
+                    <li>Excel | Power BI</li>
+                </ul>
+            </div>
+
+            <div class="job-entry mb-4">
+                <h6>Advanced People and Projects</h6>
+                <strong>Absa Support Desk Technician</strong> <span class="text-light">| May 2024 – August 2024</span>
+                <ul>
+                    <li>ITIL | Cisco | Windows OS | Mac OS | MS365 Support</li>
+                    <li>Salesforce | Workspace | Server Specialization</li>
+                    <li>WAN & LAN Support | Zscaler | Remote Support</li>
+                    <li>Assisted with BPD, SAP GUI, and BTP</li>
+                    <li>Provided comprehensive remote support</li>
+                </ul>
+            </div>
+
+            <div class="job-entry mb-4">
+                <h6>Smollan</h6>
+                <strong>IT Intern</strong> <span class="text-light">| Feb 2024 – April 2024</span>
+                <ul>
+                    <li>Excel Reports</li>
+                    <li>BI Reports | Dashboard</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        const roles = [
+            'Software Engineer',
+            'C# Specialist',
+            'Backend Engineer',
+            'Python Enthusiast',
+            'API Integrator',
+            'Web Developer',
+            'FinTech Engineer',
+            'Support Desk Engineer',
+        ];
+        let index = 0;
+        const roleSpan = document.getElementById("roleDisplay");
+        setInterval(() => {
+            index = (index + 1) % roles.length;
+            roleSpan.textContent = roles[index];
+        }, 2500);
+
+        const canvas = document.getElementById('matrix-canvas');
+        const ctx = canvas.getContext('2d');
+        canvas.height = window.innerHeight;
+        canvas.width = window.innerWidth;
+
+        const binary = '01';
+        const fontSize = 16;
+        const columns = canvas.width / fontSize;
+        const drops = Array(Math.floor(columns)).fill(1);
+
+        function drawMatrix() {
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.fillStyle = '#0F0';
+            ctx.font = `${fontSize}px monospace`;
+
+            for (let i = 0; i < drops.length; i++) {
+                const text = binary[Math.floor(Math.random() * binary.length)];
+                const x = i * fontSize;
+                const y = drops[i] * fontSize;
+
+                ctx.fillText(text, x, y);
+
+                if (y > canvas.height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+                drops[i]++;
+            }
+        }
+
+        setInterval(drawMatrix, 50);
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+    </script>
+}

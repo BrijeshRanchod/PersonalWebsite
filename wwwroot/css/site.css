@@ -1,0 +1,224 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem rgb(0, 0, 0), 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+  background-color: black;
+}
+
+.form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
+  color: var(--bs-secondary-color);
+  text-align: end;
+}
+
+.form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
+  text-align: start;
+}
+
+/* Matrix Canvas Background */
+.hero-wrapper {
+    position: relative;
+    height: auto;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+#matrix-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+}
+
+/* Hero Content Styling */
+.hero-content {
+  position: relative;
+  z-index: 10;
+  max-width: 800px;
+  margin: 0 auto;
+  padding-top: 4rem;
+  text-shadow: 0 1px 2px black;
+}
+
+/* Profile Image */
+.profile-img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid #0f0;
+  box-shadow: 0 0 20px #0f0;
+  margin-bottom: 1rem;
+}
+.lead {
+  font-size: 1.2rem;
+  color: #00ffcc;
+  text-align: center;
+}
+
+/* Title */
+.name-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #00ffcc;
+}
+
+/* Dynamic Role Text */
+.dynamic-role {
+  font-weight: bold;
+  color: #0f0;
+  animation: pulse 1.5s infinite alternate;
+}
+
+/* Pulse Animation */
+@keyframes pulse {
+  from {
+    opacity: 0.6;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Social Links */
+.social-links a {
+  color: #00ffcc;
+  margin: 0 0.3rem;
+  text-decoration: none;
+}
+
+.social-links a:hover {
+  color: #0f0;
+  text-decoration: underline;
+}
+
+/* Project List */
+.projects ul {
+  padding-left: 1rem;
+}
+
+.projects li {
+  margin-bottom: 0.5rem;
+}
+
+.projects a {
+  color: #90caf9;
+  text-decoration: none;
+}
+.projects h5 {
+  color: #00ffcc;
+  margin-bottom: 0.5rem;
+}
+.projects a:hover {
+  color: #64b5f6;
+  text-decoration: underline;
+}
+
+/* About Me Paragraph */
+.about {
+  margin-top: 2rem;
+  line-height: 1.6;
+  color: #cfcfcf;
+}
+
+.about h5 {
+  color: #00ffcc;
+  margin-bottom: 0.5rem;
+}
+.quote-bar {
+    background-color: #000;
+    color: #f0f0f0;
+    font-size: 1.1rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#quoteText {
+    font-size: 1.25rem;
+    color: #00ffcc;
+    transition: opacity 0.5s ease-in-out;
+}
+
+#quoteAuthor {
+    padding-top: 10px;
+    color: #aaa;
+}
+.work-experience {
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 2rem;
+    border-radius: 10px;
+    color: #e0e0e0;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.job-entry h6 {
+    color: #00ffcc;
+    margin-bottom: 0.25rem;
+}
+
+.job-entry ul {
+    padding-left: 1.2rem;
+    list-style: disc;
+}
+
+.job-entry ul li {
+    margin-bottom: 0.4rem;
+    font-size: 0.95rem;
+}
+
+.navbar {
+  background-color: #000000 !important;
+}
+/* Navbar base text color */
+.navbar .nav-link {
+  color: #ffffff; /* default text color */
+  transition: color 0.3s ease;
+}
+
+/* Hover state */
+.navbar .nav-link:hover .nav-item,
+.navbar .nav-link:focus {
+  color: #00ffcc; /* hover color, you can change this */
+  text-decoration: underline;
+}
+
+/* Active link color */
+.navbar .nav-link.active {
+  color: #0f0; /* active link color */
+}
+
+/* Navbar brand color */
+.navbar .navbar-brand {
+  color: #ffffff;
+}
+
+/* Hover effect for brand */
+.navbar .navbar-brand:hover {
+  color: #00ffcc;
+}
+
+.footer .container{
+  background-color: #000000;
+  color: #ffffff;
+  padding: 20px 0;
+  text-align: center;
+}
